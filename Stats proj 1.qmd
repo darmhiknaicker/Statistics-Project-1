@@ -2,7 +2,7 @@
 title: "Stats project 1"
 format: html
 ---
-sdfdvsf
+
 
 # Load the airquality dataset
 
