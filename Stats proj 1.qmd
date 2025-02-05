@@ -11,7 +11,7 @@ print(airquality)
 ```
 
 # Find rows with missing values
-
+hgd
 ```{r}
 missing_rows <- airquality[rowSums(is.na(airquality)) > 0, ]
 print(missing_rows)
