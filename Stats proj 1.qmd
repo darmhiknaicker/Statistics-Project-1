@@ -18,6 +18,7 @@ print(missing_rows)
 ```
 
 # Question 2
+
 ## Summary statistics for Temp
 
 ```{r}
@@ -44,7 +45,6 @@ print(cars)
 
 ```
 
-
 # Question 3
 
 ## Matrix calculations for beta estimates
@@ -60,7 +60,6 @@ X <- cbind(1, cars$speed)
 beta_hat <- solve(t(X) %*% X) %*% t(X) %*% Y
 print(beta_hat)
 ```
-
 
 ## Linear model for distance vs speed
 
