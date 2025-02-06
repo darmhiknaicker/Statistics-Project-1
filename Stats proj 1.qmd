@@ -50,7 +50,8 @@ print(cars)
 model <- lm(dist ~ speed, data = cars)
 summary(model)
 ```
-
+jhgj
+hghjhcg
 # Matrix calculations for beta estimates
 
 ```{r}
