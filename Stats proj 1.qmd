@@ -5,8 +5,9 @@ format: html
 
 # Load the airquality dataset
 
-```{r}
+```{r, echo=TRUE, results='hide'}
 print(airquality)
+
 ```
 
 # Question 1
