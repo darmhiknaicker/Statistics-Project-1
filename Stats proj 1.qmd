@@ -9,7 +9,7 @@ format: html
 print(airquality)
 ```
 
-# Find rows with missing values
+# Question 1
 
 ```{r}
 missing_rows <- airquality[rowSums(is.na(airquality)) > 0, ]
@@ -17,7 +17,8 @@ print(missing_rows)
 
 ```
 
-# Summary statistics for Temp
+# Question 2
+## Summary statistics for Temp
 
 ```{r}
 mean(airquality$Temp, na.rm = TRUE)
@@ -26,7 +27,7 @@ min(airquality$Temp, na.rm = TRUE)
 max(airquality$Temp, na.rm = TRUE)
 ```
 
-# Summary statistics for Ozone
+## Summary statistics for Ozone
 
 ```{r}
 mean(airquality$Ozone, na.rm = TRUE)
@@ -43,23 +44,27 @@ print(cars)
 
 ```
 
-# Linear model for distance vs speed
 
-```{r}
-model <- lm(dist ~ speed, data = cars)
-summary(model)
-```
+# Question 3
 
-# Matrix calculations for beta estimates
+## Matrix calculations for beta estimates
 
 ```{r}
 Y <- cars$dist
 X <- cbind(1, cars$speed)  
 ```
 
-# Compute beta estimates using matrix calculations
+## Compute beta estimates using matrix calculations
 
 ```{r}
 beta_hat <- solve(t(X) %*% X) %*% t(X) %*% Y
 print(beta_hat)
+```
+
+
+## Linear model for distance vs speed
+
+```{r}
+model <- lm(dist ~ speed, data = cars)
+summary(model)
 ```
