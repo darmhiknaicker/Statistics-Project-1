@@ -1,0 +1,70 @@
+---
+title: "Stats project 1"
+format: html
+---
+
+# Load the airquality dataset
+
+```{r, echo=TRUE, results='hide'}
+print(airquality)
+
+```
+
+# Question 1
+
+```{r}
+missing_rows <- airquality[rowSums(is.na(airquality)) > 0, ]
+print(missing_rows)
+
+```
+
+# Question 2
+
+## Summary statistics for Temp
+
+```{r}
+mean(airquality$Temp, na.rm = TRUE)
+sd(airquality$Temp, na.rm = TRUE)
+min(airquality$Temp, na.rm = TRUE)
+max(airquality$Temp, na.rm = TRUE)
+```
+
+## Summary statistics for Ozone
+
+```{r}
+mean(airquality$Ozone, na.rm = TRUE)
+sd(airquality$Ozone, na.rm = TRUE)
+min(airquality$Ozone, na.rm = TRUE)
+max(airquality$Ozone, na.rm = TRUE)
+```
+
+# Load the cars dataset
+
+```{r}
+data(cars)
+print(cars)
+
+```
+
+# Question 3
+
+## Matrix calculations for beta estimates
+
+```{r}
+Y <- cars$dist
+X <- cbind(1, cars$speed)  
+```
+
+## Compute beta estimates using matrix calculations
+
+```{r}
+beta_hat <- solve(t(X) %*% X) %*% t(X) %*% Y
+print(beta_hat)
+```
+
+## Linear model for distance vs speed
+
+```{r}
+model <- lm(dist ~ speed, data = cars)
+summary(model)
+```
