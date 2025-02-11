@@ -4,21 +4,16 @@ format: html
 editor: visual
 ---
 
-```{r,  echo=TRUE, results='hide'}
-# Install tidyverse if not already installed
-if (!requireNamespace("tidyverse", quietly = TRUE)) {
-  install.packages("tidyverse")
-}
+```{r,  echo=FALSE, results='hide'}
+
 library(tidyverse)
 
-# Install and load nycflights13 for flight data
-if (!requireNamespace("nycflights13", quietly = TRUE)) {
-  install.packages("nycflights13")
-}
+
 library(nycflights13)
 ```
 
-#Question 1
+# Question 1 
+
 Generating the simulated data.
 
 ```{r}
@@ -32,9 +27,9 @@ y <- sin(x/10) + e
 
 ```
 
-#Question 2
-Implementing the lowess algorithm and defining a custom algorithm that returns the smoothed values.
+# Question 2 
 
+Implementing the lowess algorithm and defining a custom algorithm that returns the smoothed values.
 
 ```{r}
 customLowess <- function(x, y, f){
@@ -76,9 +71,8 @@ y_custom_lowess <- customLowess(x, y, f)
 
 ```
 
-
-#Question 3
-Applying R's built-in lowess 
+# Question 3 
+Applying R's built-in lowess
 
 ```{r}
 # Apply R's built-in LOWESS
@@ -98,7 +92,7 @@ Plot comparison
 
 ```{r}
 ggplot() +
-  geom_point(data = original_data, aes(x, y), alpha = 0.5, color = "gray") +
+  geom_point(data = original_data, aes(x, y), alpha = 0.5, color = "black") +
   geom_line(data = custom_lowess_data, aes(x, y_smooth), color = "blue", size = 1, linetype = "dashed", alpha = 0.8) +
   geom_line(data = built_in_lowess_data, aes(x, y_smooth), color = "red", size = 1, alpha = 0.8) +
   labs(title = "Comparison of Custom LOWESS and R's Built-in LOWESS", 
@@ -106,7 +100,3 @@ ggplot() +
        caption = "Blue Dashed: Custom LOWESS, Red: Built-in LOWESS") +
   theme_minimal()
 ```
-
-
-
-
