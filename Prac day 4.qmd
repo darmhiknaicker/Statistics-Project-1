@@ -1,0 +1,71 @@
+---
+title: "Prac day 4"
+format: html
+editor: visual
+---
+
+```{r, include=FALSE}
+# Install tidyverse if not already installed
+if (!requireNamespace("tidyverse", quietly = TRUE)) {
+  install.packages("tidyverse")
+}
+library(tidyverse)
+
+# Install and load nycflights13 for flight data
+if (!requireNamespace("nycflights13", quietly = TRUE)) {
+  install.packages("nycflights13")
+}
+library(nycflights13)
+```
+
+
+```{r}
+head(flights)
+dplyr::glimpse(flights)
+
+```
+
+
+
+```{r}
+dist_tbl <- flights |>
+  filter(month == 1) |>
+  group_by(carrier) |>
+  summarise(
+    mean_distance = mean(distance, na.rm = TRUE),
+    sd_distance = sd(distance, na.rm = TRUE)
+  ) |>
+  arrange(mean_distance)
+
+dist_tbl
+```
+
+
+# Question 3
+Finding out which carriers have a standard deviation with 0 or NA. 
+
+```{r}
+# Show carriers where sd_distance is NA
+dist_tbl |> filter(is.na(sd_distance))
+
+# Show carriers where sd_distance is 0
+dist_tbl |> filter(sd_distance == 0)
+
+```
+
+If the standard deviation is NA, this happens when a carrier has only one flight in January. The standard deviation requires at least two data points to be computed.
+if the standard deviation is 0, this happens when all flights for that carrier have the same distance, leading to zero variation.
+
+
+```{r}
+dep_delay_df <- flights |>
+  group_by(month, carrier) |>
+  summarise(avg_dep_delay = mean(dep_delay, na.rm = TRUE), .groups = "drop") |>
+  pivot_wider(names_from = carrier, values_from = avg_dep_delay)  # Reshape to wide format
+
+dep_delay_df
+```
+
+
+
+
